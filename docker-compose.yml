@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql-swift
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: swiftdb
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p12345678"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+  backend:
+    build:
+      context: ./swift-api
+    container_name: swift-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy  # Wait for MySQL to be healthy before starting the backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/swiftdb  
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 12345678
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      retries: 1
+      start_period: 30s
+      timeout: 10s
+
+  frontend:
+    build:
+      context: ./swift-app-frontend
+    container_name: swift-app-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: on-failure
+
+volumes:
+  mysql-data:

@@ -1,0 +1,64 @@
+# --- FRONTEND (swift-app-frontend - Next.js) ---
+
+# Node modules
+swift-app-frontend/node_modules/
+
+# Build output
+swift-app-frontend/.next/
+swift-app-frontend/out/
+
+# Environment variables
+swift-app-frontend/.env
+swift-app-frontend/.env.local
+swift-app-frontend/.env.development.local
+swift-app-frontend/.env.test.local
+swift-app-frontend/.env.production.local
+
+# Log files
+swift-app-frontend/npm-debug.log*
+swift-app-frontend/yarn-debug.log*
+swift-app-frontend/yarn-error.log*
+
+# Vercel deployment folder (if using Vercel)
+swift-app-frontend/.vercel/
+
+# Coverage reports
+swift-app-frontend/coverage/
+
+# --- BACKEND (swift-api - Spring Boot with Maven) ---
+
+# Maven target folder (build output)
+swift-api/target/
+
+# Maven build helper files
+swift-api/pom.xml.tag
+swift-api/pom.xml.releaseBackup
+swift-api/pom.xml.versionsBackup
+
+# Maven wrapper
+swift-api/.mvn/
+swift-api/mvnw
+swift-api/mvnw.cmd
+
+# Logs
+swift-api/logs/
+swift-api/*.log
+
+# Environment variables and config
+swift-api/.env
+swift-api/application.properties
+swift-api/application.yml
+swift-api/application-*.properties
+swift-api/application-*.yml
+
+# IDEs
+swift-api/.idea/
+swift-api/.classpath
+swift-api/.project
+swift-api/.settings/
+swift-api/.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
