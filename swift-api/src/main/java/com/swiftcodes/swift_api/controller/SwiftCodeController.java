@@ -43,7 +43,7 @@ public class SwiftCodeController {
         }
 
         // Regex pattern check
-        if (!upperCode.matches("^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?$")) {
+        if (!upperCode.matches("^[A-Z0-9]{11}$")) {
             return ResponseEntity.badRequest().body(Map.of("message", "SWIFT code format is invalid."));
         }
 
@@ -135,8 +135,6 @@ public ResponseEntity<?> addSwiftCode(@RequestBody SwiftCode swiftCode) {
     String iso2 = swiftCode.getCountryISO2().toUpperCase();
 
     // Validate SWIFT code format (11 characters, proper pattern) 
-    // can be this if we want to make sure that matches a real swiftcode pattern : 
-    // but this is not required in this test "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?$"
     if ((swift.length() != 11) ||
             !swift.matches("^[A-Z0-9]{11}$")) {
         return ResponseEntity.badRequest().body(Map.of("message", "Invalid SWIFT code format."));
@@ -190,7 +188,7 @@ public ResponseEntity<?> addSwiftCode(@RequestBody SwiftCode swiftCode) {
 
         // Validate SWIFT code format (11 characters, proper pattern)
         if ((upperSwift.length() != 11) ||
-                !upperSwift.matches("^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?$")) {
+                !upperSwift.matches("^[A-Z0-9]{11}$")) {
             return ResponseEntity.badRequest().body(Map.of("message", "Invalid SWIFT code format."));
         }
 
@@ -230,3 +228,8 @@ public ResponseEntity<?> addSwiftCode(@RequestBody SwiftCode swiftCode) {
     }
 
 }
+
+
+    // To make sure that a Swiftcode matches a real swiftcode pattern : 
+    // we should use this regex "^[A-Z]{4}[A-Z]{2}[A-Z0-9]{2}([A-Z0-9]{3})?$"
+    // But this is not required in this test
