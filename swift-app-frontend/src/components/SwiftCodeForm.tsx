@@ -16,17 +16,7 @@ import FormControl from "@mui/material/FormControl";
 import Alert from "@mui/material/Alert";
 import { SelectChangeEvent } from "@mui/material/Select";
 import countries from "@/../public/data/countries-iso-2-codes.json";
-
-// Define SwiftCode interface with headquarter
-interface SwiftCode {
-  swiftCode: string;
-  bankName: string;
-  address: string;
-  townName: string;
-  headquarter: boolean;
-  countryISO2: string;
-  countryName: string;
-}
+import { SwiftCode, SwiftHeadquarter } from "@/interfaces/SwiftCode";
 
 const CustomCheckbox = styled(Checkbox)({
   "&.Mui-checked": {
@@ -40,7 +30,7 @@ export default function Form() {
     bankName: "",
     address: "",
     townName: "",
-    headquarter: false,
+    isHeadquarter: false, 
     countryISO2: "",
     countryName: "",
   });
@@ -130,7 +120,7 @@ export default function Form() {
         setForm((prev) => ({
           ...prev,
           swiftCode: value,
-          headquarter: endsWithXXX,
+          isHeadquarter: endsWithXXX, // Updated to match the correct interface
         }));
       } else if (name === "bankName") {
         setBankNameError(validateBankName(value));
@@ -231,7 +221,7 @@ export default function Form() {
         bankName: "",
         address: "",
         townName: "",
-        headquarter: false,
+        isHeadquarter: false, // Updated to match the correct interface
         countryISO2: "",
         countryName: "",
       });
@@ -434,8 +424,8 @@ export default function Form() {
         <FormControlLabel
           control={
             <CustomCheckbox
-              name="headquarter"
-              checked={form.headquarter}
+              name="isHeadquarter" // Updated to match the correct interface
+              checked={form.isHeadquarter}
               disabled
             />
           }

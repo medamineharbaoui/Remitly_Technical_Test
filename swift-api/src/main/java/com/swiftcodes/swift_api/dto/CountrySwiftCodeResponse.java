@@ -2,6 +2,8 @@ package com.swiftcodes.swift_api.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CountrySwiftCodeResponse {
 
     private String countryISO2;
@@ -40,6 +42,8 @@ public class CountrySwiftCodeResponse {
         private String bankName;
         private String address;
         private String countryISO2;
+        
+        @JsonProperty("isHeadquarter")
         private boolean isHeadquarter;
 
         // Getters and Setters
@@ -75,10 +79,12 @@ public class CountrySwiftCodeResponse {
             this.countryISO2 = countryISO2;
         }
 
+        @JsonProperty("isHeadquarter")
         public boolean isHeadquarter() {
             return isHeadquarter;
         }
 
+        @JsonProperty("isHeadquarter")
         public void setHeadquarter(boolean isHeadquarter) {
             this.isHeadquarter = isHeadquarter;
         }

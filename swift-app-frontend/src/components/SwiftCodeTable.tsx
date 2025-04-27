@@ -74,7 +74,7 @@ export default function SwiftCodeTable({ data: initialData }: TableProps) {
           bankName: code.bankName,
           address: code.address,
           countryName: result.countryName,
-          isHeadquarter: code.headquarter,
+          isHeadquarter: code.isHeadquarter,
           townName: "",
         }));
         setData(countryEntries);
@@ -152,7 +152,7 @@ export default function SwiftCodeTable({ data: initialData }: TableProps) {
           bankName: code.bankName,
           address: code.address,
           countryName: result.countryName,
-          isHeadquarter: code.headquarter,
+          isHeadquarter: code.isHeadquarter,
           townName: "",
         }));
         setData(countryEntries);

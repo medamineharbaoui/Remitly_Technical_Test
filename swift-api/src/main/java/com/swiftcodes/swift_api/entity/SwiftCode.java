@@ -1,5 +1,7 @@
 package com.swiftcodes.swift_api.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -22,6 +24,7 @@ public class SwiftCode {
     @Column(name = "town_name")
     private String townName;
 
+    @JsonProperty("isHeadquarter")
     @Column(name = "is_headquarter", nullable = false)
     private boolean isHeadquarter;
 
@@ -69,13 +72,16 @@ public class SwiftCode {
         this.townName = townName;
     }
 
-    public boolean isHeadquarter() {
-        return isHeadquarter;
-    }
+   @JsonProperty("isHeadquarter")
+public boolean isHeadquarter() {
+    return isHeadquarter;
+}
 
-    public void setHeadquarter(boolean isHeadquarter) {
-        this.isHeadquarter = isHeadquarter;
-    }
+@JsonProperty("isHeadquarter")
+public void setHeadquarter(boolean headquarter) {
+    isHeadquarter = headquarter;
+}
+
 
     public String getCountryISO2() {
         return countryISO2;

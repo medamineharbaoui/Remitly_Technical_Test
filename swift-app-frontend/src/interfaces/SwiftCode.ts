@@ -4,7 +4,6 @@ export interface SwiftCode {
   address: string;
   townName?: string;
   isHeadquarter : boolean;
-  headquarter?: boolean;  
   countryISO2: string;
   countryName: string;
 }
