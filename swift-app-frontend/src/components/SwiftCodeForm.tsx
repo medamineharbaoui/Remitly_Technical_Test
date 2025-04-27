@@ -16,7 +16,7 @@ import FormControl from "@mui/material/FormControl";
 import Alert from "@mui/material/Alert";
 import { SelectChangeEvent } from "@mui/material/Select";
 import countries from "@/../public/data/countries-iso-2-codes.json";
-import { SwiftCode, SwiftHeadquarter } from "@/interfaces/SwiftCode";
+import { SwiftCode } from "@/interfaces/SwiftCode";
 
 const CustomCheckbox = styled(Checkbox)({
   "&.Mui-checked": {
