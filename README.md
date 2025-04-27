@@ -41,7 +41,7 @@ Both parts are containerized using Docker, with separate Dockerfiles for the bac
    ```
 
 2. **Build and Run the Application**:
-  First make sure that the PORTS *3306* , *8080* and *3000* are available.
+   First make sure that the PORTS *3306* , *8080* and *3000* are available.
    Use Docker to build and run the application and database containers:
    ```bash
    docker-compose up --build
